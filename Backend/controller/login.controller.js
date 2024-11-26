@@ -2,6 +2,7 @@ import Userlogin from "../models/userlogin.model.js"; // Importing the Userlogin
 import bcrypt from "bcryptjs"; // Importing bcrypt for password hashing
 import { z } from "zod"; // Importing zod for schema validation
 import createTokensAndSaveCookies from "../jwt/AuthToken.js"; // Custom JWT utility for token creation and cookie handling
+const jwt = require("jsonwebtoken")
 
 // Define a Zod schema for user input validation
 const userSchema = z.object({
@@ -132,3 +133,17 @@ export const logout = (req, res) => {
     return res.status(500).json({ error: "Internal Server Error" });
   }
 };
+
+export const myprofile = async(req,res) => {
+  if (!authHeader) return res.status(401).json({ message: "Unauthorized" });
+
+  const token = authHeader.split(" ")[1];
+  try {
+    const user = jwt.verify(token, "your-secret-key");
+    // Fetch user profile data from database
+    const userProfile = await Userlogin.findById(user.id);
+    res.json({ user: userProfile });
+  } catch (err) {
+    res.status(401).json({ message: "Invalid or expired token" });
+  }
+}
