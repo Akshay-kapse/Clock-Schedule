@@ -26,7 +26,7 @@ const dayscheduleSchema = new mongoose.Schema(
     },
   },
   {
-    timestamps: true, // Automatically add createdAt and updatedAt fields
+    timestamps: true,
   }
 );
 
