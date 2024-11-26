@@ -133,17 +133,3 @@ export const logout = (req, res) => {
     return res.status(500).json({ error: "Internal Server Error" });
   }
 };
-
-export const myprofile = async(req,res) => {
-  if (!authHeader) return res.status(401).json({ message: "Unauthorized" });
-
-  const token = authHeader.split(" ")[1];
-  try {
-    const user = jwt.verify(token, "your-secret-key");
-    // Fetch user profile data from database
-    const userProfile = await Userlogin.findById(user.id);
-    res.json({ user: userProfile });
-  } catch (err) {
-    res.status(401).json({ message: "Invalid or expired token" });
-  }
-}
