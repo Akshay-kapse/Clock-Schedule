@@ -2,7 +2,6 @@ import Userlogin from "../models/userlogin.model.js"; // Importing the Userlogin
 import bcrypt from "bcryptjs"; // Importing bcrypt for password hashing
 import { z } from "zod"; // Importing zod for schema validation
 import createTokensAndSaveCookies from "../jwt/AuthToken.js"; // Custom JWT utility for token creation and cookie handling
-const jwt = require("jsonwebtoken")
 
 // Define a Zod schema for user input validation
 const userSchema = z.object({
