@@ -1,0 +1,57 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Poppins:ital,wght@0,100;1,500&display=swap'); */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+#time .circle{
+    position: relative;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#time .circle svg circle{
+    width: 100%;
+    height: 100%;
+    fill:transparent;
+    stroke:#191919;
+    stroke-width: 4;
+    transform: translate(5px,5px)
+}
+#time .circle svg circle:nth-child(2){
+    stroke: var(--clr);
+    stroke-dasharray: 440;
+}
+
+#time div{
+    position: absolute;
+    text-align: center;
+    font-weight: 500;
+    font-size: 1.5rem;
+}
+
+#time .ap{
+    position: relative;
+    font: 1rem;
+    transform: translateX(20px);
+}
+
+
+
+.dots::before{
+    content: "";
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: var(--clr);
+    border-radius: 50%;
+    top: -3px;
+    box-shadow: 0 0 20px var(--clr),
+    0 0 60px var(--clr);
+
+}
+
